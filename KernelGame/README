@@ -2,18 +2,6 @@ Project Overview
 
 This project simulates the development of a kernel module using the game of Connect4. In this project, the program must handle reads and writes from user space to interact with the Connect4 game which resides in kernel space. A lot of it involved transfering user commands from user space and game state information from kernel space into buffers which could be safely copied to their respective opposite sides using the copy_from_user and copy_to_user functions. This is facilitated by /dev/fourinarow which enables commands from user space to trigger kernel space logic and allows kernel space to send back game data to the user when prompted. Once a user command is copied to kernel space, the kernel processes it so that the right logic is executed using a file_operations structure. 
 
-Hurdles
-
-There weren't as many hurdles as past projects. The biggest hurdle was probably understanding the new concepts of how a kernel module works and how to set it up. There were a few new functions like class_create, device_create, and register_chrdev that took me a little while to understand what they are doing and to get right. Another obstacle was understanding how the file_operations structure worked and why each user command corresponded with a certain function in my file. Other than that, the game logic was pretty straight forward.
-
-Known Issues
-
-I cannot find any issues with the debugging process. I'm not 100% sure if the tie functionality works as I was only able to get it to tie once (I kept on accidentally winning). It's also hard to get the computer to win as it submits moves at complete random but the functionality works.
-
 How To Run
 
 Follow the command syntax of echo "COMMAND IN ALL CAPS" > /dev/fourinarow to submit commands and cat /dev/fourinarow to display expected output (what is currently in response_buffer)
-
-Additional Comments
-
-For me this project balanced learning, challenge, and enjoyability pretty well. I was able to get it done in a shorter amount of time than the other projects. All variables are in camel case and the project should be explained by the comments.
